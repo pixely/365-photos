@@ -8,6 +8,9 @@ import {Router, browserHistory} from 'react-router';
 import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
+
+// CSS imports
+import '../../node_modules/normalize.css/normalize.css';
 import '../scss/style.scss';
 
 const store = configureStore();

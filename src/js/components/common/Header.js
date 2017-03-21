@@ -6,7 +6,7 @@ import Logo from './Logo';
 const Header = ({loading}) => {
   return (
     <header className="main-header">
-      <div className="container">
+      <div className="main-header__inner container">
         <Logo />
         <Nav loading={loading} />
       </div>

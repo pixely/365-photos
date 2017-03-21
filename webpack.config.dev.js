@@ -1,5 +1,14 @@
 import webpack from 'webpack';
 import path from 'path';
+import StyleLintPlugin from 'stylelint-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+const sassLoaders = [
+  'style',
+  'css-loader?sourceMap',
+  'postcss-loader?sourceMap',
+  'sass-loader?sourceMap'
+];
 
 export default {
   debug: true,
@@ -21,12 +30,19 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new StyleLintPlugin({configFile: '.stylelintrc'}),
+    new HtmlWebpackPlugin({
+      title: 'Development App',
+      template: 'src/index.ejs',
+      filename: 'src/index2.html'
+    })
   ],
   module: {
     loaders: [
       {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
       {test: /(\.css)$/, loaders: ['style', 'css']},
+      {test: /\.scss$/, loader: sassLoaders.join('!')},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},

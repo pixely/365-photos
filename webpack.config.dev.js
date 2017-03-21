@@ -34,8 +34,7 @@ export default {
     new StyleLintPlugin({configFile: '.stylelintrc'}),
     new HtmlWebpackPlugin({
       title: 'Development App',
-      template: 'src/index.ejs',
-      filename: 'src/index2.html'
+      template: 'src/index.ejs'
     })
   ],
   module: {

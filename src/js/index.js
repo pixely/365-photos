@@ -9,8 +9,8 @@ import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
 import '../scss/style.scss';
-import '../../node_modules/bootstrap/dist/css/bootstrap.css';
-import '../../node_modules/toastr/build/toastr.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.css'; // TODO Remove bootstrap dependency
+import '../../node_modules/toastr/build/toastr.css'; // TODO Remove Toastr dependency
 
 const store = configureStore();
 store.dispatch(loadCourses());

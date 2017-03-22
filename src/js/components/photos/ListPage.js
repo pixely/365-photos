@@ -4,10 +4,18 @@ import {Link} from 'react-router';
 class HomePage extends React.Component {
   render() {
     return (
-      <div className="page jumbotron">
+      <div className="page">
         <div className="container">
-          <h1>365Photos</h1>
-          <Link to="about" className="btn btn-primary btn-lg">Learn more</Link>
+            <div className="photo">
+              <div className="photo__img">
+
+              </div>
+            </div>
+            <div className="photo">
+              <div className="photo__img">
+
+              </div>
+            </div>
         </div>
       </div>
     );

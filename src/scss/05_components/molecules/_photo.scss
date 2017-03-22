@@ -1,0 +1,13 @@
+.photo {
+  height: calc(100vh - 2.4rem - 10px);
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &__img {
+    display: block;
+    background: white;
+    height: 600px;
+    width: 100%;
+  }
+}

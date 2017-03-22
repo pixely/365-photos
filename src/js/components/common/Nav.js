@@ -9,6 +9,10 @@ const Nav = ({loading}) => {
       {" | "}
       <Link to="/about" activeClassName="active">About</Link>
       {" | "}
+      <Link to="/photos" activeClassName="active">Photos</Link>
+      {" | "}
+      <Link to="/photos/1" activeClassName="active">Photo 1</Link>
+      {" | "}
       <Link to="/courses" activeClassName="active">Courses</Link>
       {loading && <LoadingDots interval={100} dots={20}/>}
     </nav>

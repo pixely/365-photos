@@ -7,15 +7,11 @@ import Post from '../post/Post';
 // set scroll position
 
 
-class ListPage extends React.Component {
+class PostPage extends React.Component {
   render() {
     return (
       <div className="page">
         <div className="container">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
             <Post />
         </div>
       </div>
@@ -23,4 +19,4 @@ class ListPage extends React.Component {
   }
 }
 
-export default ListPage;
+export default PostPage;

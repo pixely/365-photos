@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-class PostHeader extends React.Component {
-  render() {
-    return (
-      <h2>#134</h2>
-    );
-  }
-}
+const PostHeader = ({title}) => {
+  return (
+    <div className="post-header">
+      <h2 className="post-header__title">{title}</h2>
+    </div>
+  );
+};
+
+PostHeader.propTypes = {
+  title: PropTypes.string.isRequired
+};
 
 export default PostHeader;

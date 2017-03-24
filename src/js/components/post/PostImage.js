@@ -4,7 +4,9 @@ import Image from '../common/Image';
 class PostImage extends React.Component {
   render() {
     return (
-      <Image />
+      <div className="post-image">
+        <Image />
+      </div>
     );
   }
 }

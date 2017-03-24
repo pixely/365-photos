@@ -7,11 +7,11 @@ class Post extends React.Component {
   render() {
     return (
       <div className="photo">
-        <PostHeader />
-        <div className="photo__img">
+        <div className="photo__inner">
+          <PostHeader title="Post Title" />
           <PostImage />
+          <PostMeta />
         </div>
-        <PostMeta />
       </div>
     );
   }

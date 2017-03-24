@@ -10,7 +10,11 @@ class Post extends React.Component {
         <div className="photo__inner">
           <PostHeader title="Post Title" />
           <PostImage />
-          <PostMeta />
+          <PostMeta
+            datePublished="01/01/2017"
+            location="Location string"
+            instagramLink="http://instagram.com"
+          />
         </div>
       </div>
     );

@@ -8,7 +8,9 @@ class Post extends React.Component {
     return (
       <div className="photo">
         <div className="photo__inner">
-          <PostHeader title="Post Title" />
+          <PostHeader
+            title="#120"
+          />
           <PostImage />
           <PostMeta
             datePublished="01/01/2017"

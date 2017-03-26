@@ -1,7 +1,14 @@
 .page {
-  min-height: 100vh;
   background: rgba(255, 255, 255, .75);
   display: block;
-  padding-top: calc(10px + 2.4rem);
-  width: 100%;
+  width: 100vw;
+  height: calc(100vh - 10px - 2.4rem);
+  align-items: center;
+  position: absolute;
+  top: calc(10px + 2.4rem);
+  overflow: auto;
+  scroll-snap-points-y: repeat(100%);
+  scroll-snap-type: mandatory;
+  scroll-snap-destination: 100% 0%;
+  z-index: -1;
 }

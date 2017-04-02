@@ -1,6 +1,13 @@
 .post-image {
-  display: block;
-  background: white;
-  height: 400px;
+  margin: auto;
+  display: flex;
   width: 100%;
+
+  img {
+    background: #fff;
+    padding: 3px;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+  }
 }

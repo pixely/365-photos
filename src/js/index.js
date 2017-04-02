@@ -8,6 +8,7 @@ import {Router, browserHistory} from 'react-router';
 import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
+import {loadPosts} from './actions/postActions';
 
 // CSS imports
 import '../../node_modules/normalize.css/normalize.css';
@@ -16,6 +17,7 @@ import '../scss/style.scss';
 const store = configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
+store.dispatch(loadPosts());
 
 render(
   <Provider store={store}>

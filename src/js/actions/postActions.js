@@ -18,24 +18,24 @@ export function loadPosts() {
     dispatch(beginAjaxCall());
     fetch(endpoints.POSTS_ENDPOINT, {
       method: 'get'
-    }).then(function(response) {
+    }).then(response => {
       if (response.ok) {
-        response.json().then(function(data) {
+        response.json().then(data => {
           dispatch(loadPostsSuccess(data));
 
           data.map(post => {
             if (post.featured_media){
               fetch(endpoints.MEDIA_ENDPOINT + post.featured_media, {
                 method: 'get'
-              }).then(function(response) {
+              }).then(response => {
                 if (response.ok) {
-                  response.json().then(function(data) {
+                  response.json().then(data => {
                     dispatch(loadMediaSuccess(data));
                   });
                 } else {
                   throw("Looks like the response wasn't perfect, got status " +  response.status);
                 }
-              }).catch(function(error) {
+              }).catch(error => {
                 throw(error);
               });
             }
@@ -44,7 +44,7 @@ export function loadPosts() {
       } else {
         throw("Looks like the response wasn't perfect, got status " +  response.status);
       }
-    }).catch(function(error) {
+    }).catch(error => {
       throw(error);
     });
   };

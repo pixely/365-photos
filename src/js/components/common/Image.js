@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class Image extends React.Component {
   render() {
@@ -7,5 +7,11 @@ class Image extends React.Component {
     );
   }
 }
+
+Image.propTypes = {
+    image: PropTypes.shape({
+      source_url: PropTypes.string.isRequired
+    }).isRequired
+};
 
 export default Image;

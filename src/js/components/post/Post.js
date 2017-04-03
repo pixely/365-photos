@@ -23,7 +23,7 @@ class Post extends React.Component {
   }
 }
 
-Post.PropTypes = {
+Post.propTypes = {
   id: PropTypes.number.isRequired,
   featured_media: PropTypes.number
 };

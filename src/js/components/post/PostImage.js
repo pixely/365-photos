@@ -14,19 +14,19 @@ class PostImage extends React.Component {
   }
 }
 
-PostImage.PropTypes = {
+PostImage.propTypes = {
   media: PropTypes.object.isRequired
 };
 
-function getMediaById(medias, id, defaults) {
+function getMediaById(medias, id, defaultState) {
   const media = medias.filter(media => media.id == id);
   if (media.length) return media[0];
-  return defaults;
+  return defaultState;
 }
 
 function mapStateToProps(state, ownProps) {
   const mediaId = ownProps.id;
-  let media = {id: '', watchHref: '', title: '', authorId: '', length: '', source_url: ''};
+  let media = {source_url: ''};
 
   if (mediaId && state.media.length > 0) {
     media = getMediaById(state.media, mediaId, media);
@@ -37,10 +37,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(mediaActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostImage);
+export default connect(mapStateToProps)(PostImage);

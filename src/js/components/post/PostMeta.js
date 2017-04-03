@@ -8,7 +8,7 @@ const PostMeta = ({datePublished, location, instagramLink}) => {
       <h3>{instagramLink}</h3>
     </div>
   );
-}
+};
 
 PostMeta.propTypes = {
   datePublished: PropTypes.string.isRequired,

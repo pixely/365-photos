@@ -15,7 +15,10 @@ class ListPage extends React.Component {
       <div className="page">
         <div className="container">
           {this.props.posts.map(post =>
-            <Post key={post.id}/>
+            <Post
+              key={post.id}
+              {...post}
+            />
           )}
         </div>
       </div>
@@ -29,7 +32,8 @@ ListPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    media: state.media
   };
 }
 

@@ -1101,9 +1101,9 @@ color-string@^0.3.0:
   dependencies:
     color-name "^1.0.0"
 
-"color-thief@https://github.com/lokesh/color-thief.git":
+"color-thief@https://github.com/lokesh/color-thief":
   version "2.0.2"
-  resolved "https://github.com/lokesh/color-thief.git#d05ec978b099cf9cf4341749f0955fb4b2e6dad0"
+  resolved "https://github.com/lokesh/color-thief#d05ec978b099cf9cf4341749f0955fb4b2e6dad0"
 
 color@^0.11.0:
   version "0.11.4"

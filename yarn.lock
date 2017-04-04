@@ -1101,6 +1101,10 @@ color-string@^0.3.0:
   dependencies:
     color-name "^1.0.0"
 
+"color-thief@https://github.com/lokesh/color-thief.git":
+  version "2.0.2"
+  resolved "https://github.com/lokesh/color-thief.git#d05ec978b099cf9cf4341749f0955fb4b2e6dad0"
+
 color@^0.11.0:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/color/-/color-0.11.4.tgz#6d7b5c74fb65e841cd48792ad1ed5e07b904d764"
@@ -3564,6 +3568,10 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+normalize.css@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-5.0.0.tgz#7cec875ce8178a5333c4de80b68ea9c18b9d7c37"
+
 npm-run-all@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-1.8.0.tgz#13c315ab7cbeef24adff15a59222e2e535196d36"
@@ -4292,11 +4300,7 @@ randomatic@^1.1.3:
     is-number "^2.0.2"
     kind-of "^3.0.2"
 
-range-parser@^1.0.3:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
-
-range-parser@~1.0.3:
+range-parser@^1.0.3, range-parser@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.0.3.tgz#6872823535c692e2c2a0103826afd82c2e0ff175"
 

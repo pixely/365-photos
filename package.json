@@ -30,7 +30,6 @@
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "babel-preset-node6": "^11.0.0",
-    "color-thief": "lokesh/color-thief",
     "normalize.css": "^5.0.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",

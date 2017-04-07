@@ -18,7 +18,7 @@ export default (
     // 365Photos
     <Route path="about" component={AboutPage} />
     <Route path="photos" component={PhotosList} />
-    <Route path="photos/:id" component={PhotosList} />
+    <Route path="photo/:id" component={PhotosList} />
 
   </Route>
 );

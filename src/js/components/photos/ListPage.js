@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {browserHistory} from 'react-router';
 import Post from '../post/Post';
 import * as postActions from '../../actions/postActions';
 
@@ -25,13 +25,18 @@ class ListPage extends React.Component {
   componentDidMount() {
     page = document.querySelector('.page');
     page.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
+  }
+
+  componentWillReceiveProps() {
+    this.handleScroll();
   }
 
   componentWillUnmount() {
     page.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(event) {
+  handleScroll() {
     let scrollTop = page.scrollTop;
     let photos = Array.from(page.querySelectorAll('.photo'));
 
@@ -44,11 +49,12 @@ class ListPage extends React.Component {
           return index;
         }
       })
-      .filter(Boolean)
-      .filter(photo => this.state.current !== photo )[0];
+      .filter(photo => Number.isInteger(photo))
+      .filter(photo => this.state.current !== photo)[0];
 
-    if( newState ) {
+    if( newState >= 0 ) {
       this.setState({current: newState});
+      browserHistory.push(`/photo/${newState}`);
     }
 
   }

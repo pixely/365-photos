@@ -3,11 +3,11 @@ import { Link, IndexLink } from 'react-router';
 import Nav from './Nav';
 import Logo from './Logo';
 
-const Header = loading => (
+const Header = props => (
   <header className="main-header">
     <div className="main-header__inner container">
       <Logo />
-      <Nav loading={loading} />
+      <Nav loading={props.loading} />
     </div>
   </header>
 );

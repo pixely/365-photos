@@ -30,7 +30,7 @@
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "babel-preset-node6": "^11.0.0",
-    "color-thief": "lokesh/color-thief",
+    "color-thief": "pixely/color-thief",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "normalize.css": "^5.0.0",

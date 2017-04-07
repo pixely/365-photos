@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/pixely/365-photos#readme",
   "dependencies": {
-    "babel-cli": "^6.24.0",
     "babel-polyfill": "6.8.0",
     "babel-preset-node6": "^11.0.0",
     "color-thief": "lokesh/color-thief",
@@ -42,10 +41,10 @@
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1"
-  },
+  },  
   "devDependencies": {
     "autoprefixer": "^6.3.6",
-    "babel-cli": "^6.8.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "6.8.0",
     "babel-loader": "6.2.4",
     "babel-plugin-react-display-name": "2.0.0",

@@ -50,7 +50,7 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, saving, errors }) =>
 
 CourseForm.defaultProps = {
   allAuthors: [],
-  saving: () => {},
+  saving: false,
   errors: {},
 };
 

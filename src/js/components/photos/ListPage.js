@@ -1,13 +1,14 @@
-import React, {PropTypes} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
+import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import Post from '../post/Post';
 import * as postActions from '../../actions/postActions';
 
 // fetch from endpoint
 
 // set scroll position
+
 let page;
 
 class ListPage extends React.Component {
@@ -15,11 +16,10 @@ class ListPage extends React.Component {
     super(props, context);
 
     this.state = {
-      current: null
+      current: null,
     };
 
     this.handleScroll = this.handleScroll.bind(this);
-
   }
 
   componentDidMount() {
@@ -37,26 +37,26 @@ class ListPage extends React.Component {
   }
 
   handleScroll() {
-    let scrollTop = page.scrollTop;
-    let photos = Array.from(page.querySelectorAll('.photo'));
+    const scrollTop = page.scrollTop;
+    const photos = Array.from(page.querySelectorAll('.photo'));
 
     // TODO: Trigger URL change when reaching new photo
     // TODO: Trigger colour change when half way to a new photo
 
-    let newState = photos
+    const newState = photos
       .map((photo, index) => {
-        if( scrollTop >= photo.offsetTop && scrollTop < (photo.offsetTop + photo.clientHeight) ){
+        if (scrollTop >= photo.offsetTop && scrollTop < (photo.offsetTop + photo.clientHeight)) {
           return index;
         }
+        return false;
       })
       .filter(photo => Number.isInteger(photo))
       .filter(photo => this.state.current !== photo)[0];
 
-    if( newState >= 0 ) {
-      this.setState({current: newState});
+    if (newState >= 0) {
+      this.setState({ current: newState });
       browserHistory.push(`/photo/${newState}`);
     }
-
   }
 
   render() {
@@ -67,7 +67,7 @@ class ListPage extends React.Component {
             <Post
               key={post.id}
               {...post}
-            />
+            />,
           )}
         </div>
       </div>
@@ -76,19 +76,24 @@ class ListPage extends React.Component {
 }
 
 ListPage.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      featured_image: PropTypes.number,
+    }).isRequired,
+  ).isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     posts: state.posts,
-    media: state.media
+    media: state.media,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(postActions, dispatch)
+    actions: bindActionCreators(postActions, dispatch),
   };
 }
 

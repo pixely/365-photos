@@ -1,15 +1,15 @@
 import expect from 'expect';
-import {createStore} from 'redux';
+import { createStore } from 'redux';
 import rootReducer from '../reducers';
 import initialState from '../reducers/initialState';
 import * as courseActions from '../actions/courseActions';
 
-describe('Store', function() {
-  it('should handle creating courses', function() {
+describe('Store', () => {
+  it('should handle creating courses', () => {
     // arrange
     const store = createStore(rootReducer, initialState);
     const course = {
-      title: "Clean Code"
+      title: 'Clean Code',
     };
 
     // act
@@ -19,10 +19,9 @@ describe('Store', function() {
     // assert
     const actual = store.getState().courses[0];
     const expected = {
-      title: "Clean Code"
+      title: 'Clean Code',
     };
 
     expect(actual).toEqual(expected);
-
   });
 });

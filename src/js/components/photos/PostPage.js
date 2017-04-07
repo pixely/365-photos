@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import Post from '../post/Post';
 
 // fetch from endpoint
@@ -7,16 +7,12 @@ import Post from '../post/Post';
 // set scroll position
 
 
-class PostPage extends React.Component {
-  render() {
-    return (
-      <div className="page">
-        <div className="container">
-            <Post />
-        </div>
-      </div>
-    );
-  }
-}
+const PostPage = props => (
+  <div className="page">
+    <div className="container">
+      <Post />
+    </div>
+  </div>
+);
 
 export default PostPage;

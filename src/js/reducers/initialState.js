@@ -3,5 +3,5 @@ export default {
   courses: [],
   posts: [],
   media: [],
-  ajaxCallsInProgress: 0
+  ajaxCallsInProgress: 0,
 };

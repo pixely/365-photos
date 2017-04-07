@@ -1,26 +1,26 @@
 import * as types from './actionTypes';
 import * as endpoints from '../api/endpoints';
-import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadMediaSuccess(media) {
   return { type: types.LOAD_MEDIA_SUCCESS, media };
 }
 
 export function loadMedia(media) {
-  return function(dispatch) {
+  return (dispatch) => {
     dispatch(beginAjaxCall());
     fetch(endpoints.MEDIA_ENDPOINT + media, {
-      method: 'get'
-    }).then(function(response) {
+      method: 'get',
+    }).then((response) => {
       if (response.ok) {
-        response.json().then(function(data) {
+        response.json().then((data) => {
           dispatch(loadMediaSuccess(data));
         });
       } else {
-        throw("Looks like the response wasn't perfect, got status " +  response.status);
+        throw (response);
       }
-    }).catch(function(error) {
-      throw(error);
+    }).catch((error) => {
+      throw (error);
     });
   };
 }

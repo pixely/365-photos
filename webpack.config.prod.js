@@ -7,11 +7,11 @@ const sassLoaders = [
   'style-loader',
   'css-loader?sourceMap',
   'postcss-loader?sourceMap',
-  'sass-loader?sourceMap'
+  'sass-loader?sourceMap',
 ];
 
 const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify('production')
+  'process.env.NODE_ENV': JSON.stringify('production'),
 };
 
 export default {
@@ -21,12 +21,12 @@ export default {
   entry: './src/js/index',
   target: 'web',
   output: {
-    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
+    path: `${__dirname}/dist`, // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
-    filename: 'app-[hash].js'
+    filename: 'app-[hash].js',
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -36,18 +36,18 @@ export default {
     new webpack.optimize.UglifyJsPlugin(),
     new HtmlWebpackPlugin({
       title: 'Production App',
-      template: 'src/index.ejs'
-    })
+      template: 'src/index.ejs',
+    }),
   ],
   module: {
     loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
-      {test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
-      {test: /\.scss$/, loader: sassLoaders.join('!')},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
-      {test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000"},
-      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
-      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
-    ]
-  }
+      { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel'] },
+      { test: /(\.css)$/, loader: ExtractTextPlugin.extract('css?sourceMap') },
+      { test: /\.scss$/, loader: sassLoaders.join('!') },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
+      { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
+      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+    ],
+  },
 };

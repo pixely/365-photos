@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import * as endpoints from '../api/endpoints';
-import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadPostsSuccess(posts) {
   return { type: types.LOAD_POSTS_SUCCESS, posts };
@@ -12,42 +12,42 @@ export function loadMediaSuccess(media) {
 
 function loadMedia(dispatch, featured_media) {
   fetch(endpoints.MEDIA_ENDPOINT + featured_media, {
-    method: 'get'
-  }).then(response => {
+    method: 'get',
+  }).then((response) => {
     if (response.ok) {
-      response.json().then(data => {
+      response.json().then((data) => {
         dispatch(loadMediaSuccess(data));
       });
     } else {
-      throw("Looks like the response wasn't perfect, got status " +  response.status);
+      throw (response);
     }
-  }).catch(error => {
-    throw(error);
+  }).catch((error) => {
+    throw (error);
   });
 }
 
 export function loadPosts() {
-  return function(dispatch) {
+  return (dispatch) => {
     dispatch(beginAjaxCall());
     fetch(endpoints.POSTS_ENDPOINT, {
-      method: 'get'
-    }).then(response => {
+      method: 'get',
+    }).then((response) => {
       if (response.ok) {
-        response.json().then(data => {
+        response.json().then((data) => {
           dispatch(loadPostsSuccess(data));
 
-          data.map(post => {
-            if (post.featured_media){
+          data.map((post) => {
+            if (post.featured_media) {
               loadMedia(dispatch, post.featured_media);
             }
+            return false;
           });
-
         });
       } else {
-        throw("Looks like the response wasn't perfect, got status " +  response.status);
+        throw (response);
       }
-    }).catch(error => {
-      throw(error);
+    }).catch((error) => {
+      throw (error);
     });
   };
 }

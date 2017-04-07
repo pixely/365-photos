@@ -29,7 +29,8 @@ export function saveCourse(course) {
   return (dispatch, getState) => {
     dispatch(beginAjaxCall());
     return courseApi.saveCourse(course).then((savedCourse) => {
-      course.id ? dispatch(updateCourseSuccess(savedCourse)) : // eslint-disable-line no-unused-expressions
+      // eslint-disable-next-line no-unused-expressions
+      course.id ? dispatch(updateCourseSuccess(savedCourse)) :
         dispatch(createCourseSuccess(savedCourse));
     }).catch((error) => {
       dispatch(ajaxCallError());

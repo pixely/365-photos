@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Post from '../post/Post';
 import * as postActions from '../../actions/postActions';
+import colorFinder from '../../modules/color/finder';
 
 // fetch from endpoint
 
@@ -26,6 +27,9 @@ class ListPage extends React.Component {
     page = document.querySelector('.page');
     page.addEventListener('scroll', this.handleScroll);
     this.handleScroll();
+
+    const test = colorFinder.init('imageurl');
+    console.log(test);
   }
 
   componentWillReceiveProps() {

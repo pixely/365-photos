@@ -29,7 +29,6 @@ class ListPage extends React.Component {
     this.handleScroll();
 
     const test = colorFinder.init('imageurl');
-    console.log(test);
   }
 
   componentWillReceiveProps() {

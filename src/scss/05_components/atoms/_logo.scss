@@ -1,6 +1,13 @@
 .logo {
   color: $color-white;
   font-family: $font-family-heading;
+  font-size: 2.4rem;
+  line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(0, 0, 0, .5);
+
+  &__sub {
+    font-size: 1.52rem;
+  }
 }

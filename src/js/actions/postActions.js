@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import * as endpoints from '../api/endpoints';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
+import colorFinder from '../modules/color/finder';
 
 export function loadPostsSuccess(posts) {
   return { type: types.LOAD_POSTS_SUCCESS, posts };
@@ -16,7 +17,13 @@ function loadMedia(dispatch, featured_media) {
   }).then((response) => {
     if (response.ok) {
       response.json().then((data) => {
-        dispatch(loadMediaSuccess(data));
+        const sourceImage = colorFinder.find(data.media_details.sizes.thumbnail.source_url);
+
+        sourceImage.then((colors) => {
+          dispatch(loadMediaSuccess(Object.assign(data, colors)));
+        }).catch(() => {
+          dispatch(loadMediaSuccess(data));
+        });
       });
     } else {
       throw (response);

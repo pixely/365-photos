@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import * as endpoints from '../api/endpoints';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
+import { loadMedia } from './mediaActions';
 import colorFinder from '../modules/color/finder';
 
 export function loadPostsSuccess(posts) {
@@ -9,28 +10,6 @@ export function loadPostsSuccess(posts) {
 
 export function loadMediaSuccess(media) {
   return { type: types.LOAD_MEDIA_SUCCESS, media };
-}
-
-function loadMedia(dispatch, featured_media) {
-  fetch(endpoints.MEDIA_ENDPOINT + featured_media, {
-    method: 'get',
-  }).then((response) => {
-    if (response.ok) {
-      response.json().then((data) => {
-        const sourceImage = colorFinder.find(data.media_details.sizes.thumbnail.source_url);
-
-        sourceImage.then((colors) => {
-          dispatch(loadMediaSuccess(Object.assign(data, colors)));
-        }).catch(() => {
-          dispatch(loadMediaSuccess(data));
-        });
-      });
-    } else {
-      throw (response);
-    }
-  }).catch((error) => {
-    throw (error);
-  });
 }
 
 export function loadPosts() {
@@ -43,12 +22,9 @@ export function loadPosts() {
         response.json().then((data) => {
           dispatch(loadPostsSuccess(data));
 
-          data.map((post) => {
-            if (post.featured_media) {
-              loadMedia(dispatch, post.featured_media);
-            }
-            return false;
-          });
+          if (data[0].featured_media) {
+            dispatch(loadMedia(data[0].featured_media));
+          }
         });
       } else {
         throw (response);

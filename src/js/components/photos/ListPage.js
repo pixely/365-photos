@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Post from '../post/Post';
-import * as postActions from '../../actions/postActions';
+import * as mediaActions from '../../actions/mediaActions';
 
 // fetch from endpoint
 
@@ -36,6 +36,11 @@ class ListPage extends React.Component {
     page.removeEventListener('scroll', this.handleScroll);
   }
 
+  updateColor(color = [0, 0, 0]) {
+    this.colorVal = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+    document.documentElement.style.setProperty('--background', this.colorVal);
+  }
+
   handleScroll() {
     const scrollTop = page.scrollTop;
     const photos = Array.from(page.querySelectorAll('.photo'));
@@ -54,8 +59,17 @@ class ListPage extends React.Component {
       .filter(photo => this.state.current !== photo)[0];
 
     if (newState >= 0) {
+      this.props.actions.loadMedia(this.props.posts[newState].featured_media);
+
+      const featuredImageId = this.props.posts[newState].featured_media;
+      const featuredImageColor = this.props.media
+      .filter(media => media.id === featuredImageId)
+      .map(media => media.colors)[0];
+
+
+      this.updateColor(featuredImageColor);
       this.setState({ current: newState });
-      browserHistory.push(`/photo/${newState}`);
+    //  browserHistory.push(`/photo/${newState}`);
     }
   }
 
@@ -79,9 +93,15 @@ ListPage.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      featured_image: PropTypes.number,
+      featured_media: PropTypes.number,
     }).isRequired,
   ).isRequired,
+  media: PropTypes.arrayOf(
+    PropTypes.shape({
+      source_url: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  actions: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 function mapStateToProps(state, ownProps) {
@@ -93,7 +113,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(postActions, dispatch),
+    actions: bindActionCreators(mediaActions, dispatch),
   };
 }
 
